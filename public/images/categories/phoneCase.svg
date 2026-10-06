@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200" role="img" aria-label="phoneCase">
+    <defs>
+      <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#ffffff"/>
+        <stop offset="1" stop-color="#eef4f7"/>
+      </linearGradient>
+    </defs>
+    <rect x="2" y="2" width="196" height="196" rx="48" fill="url(#bg)" stroke="#dfe5eb" stroke-width="4"/>
+    <g transform="translate(100 100) scale(0.66) translate(-200 -200)">
+    <rect x="128" y="102" width="144" height="196" rx="32" fill="#1d4562"/>
+    <rect x="142" y="116" width="116" height="168" rx="22" fill="#315775"/>
+    <rect x="152" y="128" width="54" height="54" rx="16" fill="#1d4562"/>
+    <circle cx="168" cy="144" r="9" fill="#ffffff" opacity="0.35"/>
+    <circle cx="190" cy="166" r="9" fill="#ffffff" opacity="0.35"/>
+    <circle cx="192" cy="140" r="4.5" fill="#ff5a00"/>
+    <g stroke="#ffffff" stroke-width="7" stroke-linecap="round" opacity="0.2">
+      <path d="M166 222h72"/><path d="M166 244h72"/><path d="M166 266h46"/>
+    </g></g></svg>

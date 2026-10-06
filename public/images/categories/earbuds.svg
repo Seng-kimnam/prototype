@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200" role="img" aria-label="earbuds">
+    <defs>
+      <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#ffffff"/>
+        <stop offset="1" stop-color="#eef4f7"/>
+      </linearGradient>
+    </defs>
+    <rect x="2" y="2" width="196" height="196" rx="48" fill="url(#bg)" stroke="#dfe5eb" stroke-width="4"/>
+    <g transform="translate(100 100) scale(0.66) translate(-200 -200)">
+    <rect x="146" y="248" width="108" height="62" rx="26" fill="#315775"/>
+    <path d="M146 274h108" stroke="#1d4562" stroke-width="4" opacity="0.45"/>
+    <circle cx="200" cy="292" r="5" fill="#ff5a00"/>
+    <rect x="126" y="194" width="28" height="60" rx="14" fill="#1d4562"/>
+    <circle cx="140" cy="176" r="32" fill="#315775"/>
+    <ellipse cx="130" cy="168" rx="12" ry="8" fill="#ffffff" opacity="0.28"/>
+    <circle cx="140" cy="180" r="9" fill="#ff5a00" opacity="0.9"/>
+    <rect x="248" y="194" width="28" height="60" rx="14" fill="#1d4562"/>
+    <circle cx="262" cy="176" r="32" fill="#315775"/>
+    <ellipse cx="252" cy="168" rx="12" ry="8" fill="#ffffff" opacity="0.28"/>
+    <circle cx="262" cy="180" r="9" fill="#ff5a00" opacity="0.9"/></g></svg>

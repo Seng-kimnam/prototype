@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400" role="img" aria-label="skincare 1">
+    <defs>
+      <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#f4f7fa"/>
+        <stop offset="1" stop-color="#e8eff5"/>
+      </linearGradient>
+    </defs>
+    <rect width="400" height="400" rx="52" fill="url(#bg)"/>
+    <circle cx="336" cy="64" r="76" fill="#ff5a00" opacity="0.1"/>
+    <circle cx="60" cy="336" r="92" fill="#315775" opacity="0.08"/>
+    <ellipse cx="200" cy="348" rx="124" ry="20" fill="#1d4562" opacity="0.1"/>
+    
+    <rect x="176" y="124" width="48" height="30" rx="10" fill="#1d4562"/>
+    <rect x="164" y="80" width="72" height="52" rx="16" fill="#1d4562"/>
+    <rect x="136" y="146" width="128" height="168" rx="26" fill="#315775"/>
+    <rect x="152" y="164" width="96" height="134" rx="18" fill="#ffffff" opacity="0.12"/>
+    <rect x="152" y="194" width="96" height="70" rx="16" fill="#ffffff" opacity="0.92"/>
+    <rect x="168" y="214" width="64" height="9" rx="4.5" fill="#315775" opacity="0.85"/>
+    <rect x="182" y="234" width="36" height="7" rx="3.5" fill="#315775" opacity="0.5"/>
+    <circle cx="256" cy="196" r="13" fill="#ff5a00" opacity="0.9"/></svg>

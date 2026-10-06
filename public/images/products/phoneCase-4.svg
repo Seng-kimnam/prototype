@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400" role="img" aria-label="phoneCase 4">
+    <defs>
+      <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#f4f8fe"/>
+        <stop offset="1" stop-color="#e6eefa"/>
+      </linearGradient>
+    </defs>
+    <rect width="400" height="400" rx="52" fill="url(#bg)"/>
+    <circle cx="336" cy="64" r="76" fill="#ff8a3d" opacity="0.1"/>
+    <circle cx="60" cy="336" r="92" fill="#2f68c5" opacity="0.08"/>
+    <ellipse cx="200" cy="348" rx="124" ry="20" fill="#1d457f" opacity="0.1"/>
+    
+    <rect x="128" y="102" width="144" height="196" rx="32" fill="#1d457f"/>
+    <rect x="142" y="116" width="116" height="168" rx="22" fill="#2f68c5"/>
+    <rect x="152" y="128" width="54" height="54" rx="16" fill="#1d457f"/>
+    <circle cx="168" cy="144" r="9" fill="#ffffff" opacity="0.35"/>
+    <circle cx="190" cy="166" r="9" fill="#ffffff" opacity="0.35"/>
+    <circle cx="192" cy="140" r="4.5" fill="#ff8a3d"/>
+    <g stroke="#ffffff" stroke-width="7" stroke-linecap="round" opacity="0.2">
+      <path d="M166 222h72"/><path d="M166 244h72"/><path d="M166 266h46"/>
+    </g></svg>
