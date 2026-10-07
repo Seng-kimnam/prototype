@@ -20,7 +20,7 @@ export default function Shortlist() {
         <Breadcrumb items={[{ label: 'Home', to: '/' }, { label: 'Ask AI' }, { label: 'Shortlist' }]} />
         <div className="card mt-4 px-8 py-12 text-center">
           <h2 className="text-[28px] font-black">No shortlist yet</h2>
-          <p className="mx-auto mt-2 max-w-[520px] text-muted">
+          <p className="mx-auto mt-2 max-w-180 text-muted">
             Describe what you need and the AI will rank the matching products for you.
           </p>
           <Link to="/preferences" className="btn btn-primary mt-5">
@@ -51,14 +51,14 @@ export default function Shortlist() {
 
       <h2 className="text-[28px] font-black">Your Smart Shortlist</h2>
       {aiPrompt ? (
-        <p className="mt-2 inline-flex max-w-[720px] items-start gap-2 rounded-2xl bg-flame-tint px-3.5 py-2.5 text-sm text-ink">
+        <p className="mt-2 inline-flex max-w-180 items-start gap-2 rounded-2xl bg-flame-tint px-3.5 py-2.5 text-sm text-ink">
           <img src="/images/ai/sparkle.svg" alt="" className="mt-0.5 h-4 w-4 flex-none" />
           <span>
             <b>You asked:</b> “{aiPrompt}”
           </span>
         </p>
       ) : null}
-      <p className="mt-2 max-w-[720px] text-muted">
+      <p className="mt-2 max-w-180 text-muted">
         {shortlist.length} options were ranked against your request
         {preferences.length
           ? `: ${preferences.map((preference) => preference.label.toLowerCase()).join(', ')}.`
@@ -87,7 +87,7 @@ export default function Shortlist() {
               <p className="mb-2 text-xs font-extrabold text-muted">{pick.badgeMeta.blurb}</p>
             )}
 
-            <ProductImage src={pick.product.image} alt={pick.product.name} className="mb-3 aspect-[4/3] w-full" />
+            <ProductImage src={pick.product.image} alt={pick.product.name} className="mb-3 aspect-4/3 w-full" />
             <span className="text-[11px] font-bold tracking-wide text-muted uppercase">{pick.product.brand}</span>
             <h3 className="text-lg font-black">{pick.product.name}</h3>
             <div className="my-1 text-[22px] font-black text-navy">{money(pick.total)}</div>
@@ -125,10 +125,10 @@ export default function Shortlist() {
           <Icon name="sliders" className="h-4.5 w-4.5" />
           Ask again
         </Link>
-        <button type="button" onClick={rebuild} className="btn btn-secondary">
+        {/* <button type="button" onClick={rebuild} className="btn btn-secondary">
           <Icon name="refresh" className="h-4.5 w-4.5" />
           Re-rank
-        </button>
+        </button> */}
         <button type="button" onClick={() => setShowCompare((open) => !open)} className="btn btn-primary">
           {showCompare ? 'Hide comparison' : `Compare the ${shortlist.length}`}
         </button>
@@ -136,7 +136,7 @@ export default function Shortlist() {
 
       {showCompare ? (
         <div className="mt-4 overflow-x-auto rounded-[18px] border border-line bg-white">
-          <table className="w-full min-w-[720px] border-collapse">
+          <table className="w-full min-w-180 border-collapse">
             <thead>
               <tr>
                 <th className="bg-[#f4f7fa] px-3.5 py-3 text-left text-sm font-extrabold">What matters</th>

@@ -4,7 +4,7 @@ import { Icon } from '../components/icons.jsx';
 
 export default function NotFound() {
   return (
-    <div className="animate-rise mx-auto max-w-[620px] py-10 text-center">
+    <div className="animate-rise mx-auto max-w-155 py-10 text-center">
       <Breadcrumb items={[{ label: 'Home', to: '/' }, { label: 'Not found' }]} />
 
       <img src="/images/states/empty-search.svg" alt="" className="mx-auto h-40 w-auto" />

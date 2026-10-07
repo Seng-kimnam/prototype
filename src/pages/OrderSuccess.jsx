@@ -12,9 +12,9 @@ export default function OrderSuccess() {
 
   if (!order || (orderId && order.id !== orderId)) {
     return (
-      <div className="animate-rise mx-auto max-w-[760px] py-10 text-center">
+      <div className="animate-rise mx-auto max-w-190 py-10 text-center">
         <h1 className="text-3xl font-black">No recent order to show</h1>
-        <p className="mx-auto mt-2 max-w-[520px] text-muted">
+        <p className="mx-auto mt-2 max-w-130 text-muted">
           Checkout an order and the full receipt with the price breakdown will appear here.
         </p>
         <Link to="/" className="btn btn-primary mt-6">
@@ -28,16 +28,16 @@ export default function OrderSuccess() {
   const placed = new Date(order.placedAt);
 
   return (
-    <div className="animate-rise mx-auto max-w-[760px]">
+    <div className="animate-rise mx-auto max-w-190">
       <div className="rounded-[26px] border border-[#cfe8d6] bg-[linear-gradient(135deg,#eef9f1,#ffffff)] px-7 py-7.5 text-center shadow-[0_10px_30px_rgba(0,0,0,0.04)]">
-        <div className="mx-auto grid h-[76px] w-[76px] place-items-center rounded-full bg-grass text-white">
+        <div className="mx-auto grid h-19 w-19 place-items-center rounded-full bg-grass text-white">
           <Icon name="check" className="h-9 w-9" strokeWidth={3} />
         </div>
         <span className="mt-4 inline-block rounded-full bg-[#eef4f7] px-3 py-1.5 text-xs font-extrabold text-navy">
           Order #{order.id}
         </span>
         <h1 className="mt-3.5 text-4xl font-black">Order placed successfully!</h1>
-        <p className="mx-auto mt-2 max-w-[520px] text-muted">
+        <p className="mx-auto mt-2 max-w-130 text-muted">
           Your ShopNow order is confirmed. Here is the receipt with the full price breakdown
           {placed ? ` · placed ${placed.toLocaleString('en-US')}` : ''}.
         </p>

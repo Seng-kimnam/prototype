@@ -21,7 +21,7 @@ export default function Choice() {
         <Breadcrumb items={[{ label: 'Home', to: '/' }, { label: 'Choice' }]} />
         <div className="card mt-4 px-8 py-12 text-center">
           <h2 className="text-[28px] font-black">Nothing chosen yet</h2>
-          <p className="mx-auto mt-2 max-w-[520px] text-muted">
+          <p className="mx-auto mt-2 max-w-130 text-muted">
             Describe what you need to the AI and this screen will confirm the choice and its final price.
           </p>
           <Link to="/preferences" className="btn btn-primary mt-5">
