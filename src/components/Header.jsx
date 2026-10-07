@@ -31,7 +31,7 @@ export function ProgressTrail() {
       { key: 'home', label: 'Home', to: '/' },
       { key: 'search', label: 'Search', to: searchTo },
       { key: 'product', label: 'Product', to: productTo },
-      { key: 'preferences', label: 'Preferences', to: '/preferences' },
+      { key: 'preferences', label: 'Ask AI', to: '/preferences' },
       { key: 'shortlist', label: 'Shortlist', to: '/shortlist' },
       { key: 'choice', label: 'Choice', to: '/choice' },
       { key: 'cart', label: 'Cart', to: '/cart' },

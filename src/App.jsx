@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { Route, Routes, useLocation } from 'react-router-dom';
+import { AiFab } from './components/AiFab.jsx';
 import { Header } from './components/Header.jsx';
 import Cart from './pages/Cart.jsx';
 import Choice from './pages/Choice.jsx';
@@ -22,7 +23,7 @@ function ScrollToTop() {
 }
 
 const FLOW_NOTE =
-  'Prototype flow: marketplace home → search → products with the full delivered price → product details → add to cart → cart review → checkout → success receipt. When the shopper is unsure they can ask the AI → preferences → three-product shortlist → add to cart.';
+  'Prototype flow: marketplace home → search → products with the full delivered price → product details → add to cart → cart review → checkout → success receipt. When the shopper is unsure they describe what they need in the AI prompt → three-product shortlist → add to cart.';
 
 export default function App() {
   return (
@@ -30,7 +31,7 @@ export default function App() {
       <ScrollToTop />
       <Header />
 
-      <main className="mx-auto w-full max-w-[1100px] flex-1 px-5 py-7 pb-15">
+      <main className="mx-auto w-full max-w-275 flex-1 px-5 py-7 pb-15">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/search" element={<SearchResults />} />
@@ -46,6 +47,8 @@ export default function App() {
 
         <p className="mt-7 text-center text-xs text-muted">{FLOW_NOTE}</p>
       </main>
+
+      <AiFab label="AI Chat Assistant" hintTitle="Chat with ShopNow AI" />
     </div>
   );
 }

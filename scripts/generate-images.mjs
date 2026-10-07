@@ -27,13 +27,15 @@ const write = (relativePath, contents) => {
   return relativePath;
 };
 
-/* ---------------------------------------------------------------- palettes */
+/* ------------------------------------------------------------ palettes */
 
 const productPalettes = [
   { base: '#315775', dark: '#1d4562', accent: '#ff5a00', from: '#f4f7fa', to: '#e8eff5' },
   { base: '#1f7a6b', dark: '#12564a', accent: '#f59e0b', from: '#f3faf8', to: '#e4f3ef' },
-  { base: '#5b4a86', dark: '#3b2f5c', accent: '#ff5a00', from: '#f7f5fc', to: '#ece7f6' },
-  { base: '#2f68c5', dark: '#1d457f', accent: '#ff8a3d', from: '#f4f8fe', to: '#e6eefa' },
+  { base: '#6d4bb0', dark: '#46307a', accent: '#ffb020', from: '#f7f5fc', to: '#ece7f6' },
+  { base: '#2f68c5', dark: '#1d457f', accent: '#38bdf8', from: '#f4f8fe', to: '#e6eefa' },
+  { base: '#c0392b', dark: '#7f241a', accent: '#ffd166', from: '#fdf5f4', to: '#f6e3df' },
+  { base: '#b83b7a', dark: '#7d2352', accent: '#ff8a3d', from: '#fdf3f8', to: '#f7e2ee' },
 ];
 
 const iconPalette = {
@@ -174,10 +176,49 @@ const shapes = {
 
 /* --------------------------------------------------------------- templates */
 
+const decor = (index, p) => {
+  switch (index % 6) {
+    case 1:
+      return `
+      <g stroke="${p.accent}" stroke-width="16" opacity="0.14" stroke-linecap="round">
+        <path d="M300 -20 420 100"/><path d="M344 -20 464 100"/><path d="M256 -20 376 100"/>
+      </g>`;
+    case 2:
+      return `
+      <g fill="${p.base}" opacity="0.14">
+        ${Array.from({ length: 5 }, (_, row) =>
+          Array.from({ length: 5 }, (_, col) => `<circle cx="${292 + col * 26}" cy="${36 + row * 26}" r="5"/>`).join(''),
+        ).join('')}
+      </g>`;
+    case 3:
+      return `
+      <g fill="${p.accent}" opacity="0.12">
+        <path d="M322 20l42 62h-84z"/>
+        <path d="M58 318l42 62H16z"/>
+      </g>`;
+    case 4:
+      return `
+      <g fill="none" stroke="${p.base}" stroke-width="12" opacity="0.12">
+        <circle cx="330" cy="70" r="40"/><circle cx="330" cy="70" r="68"/>
+        <circle cx="70" cy="330" r="40"/>
+      </g>`;
+    case 5:
+      return `
+      <g fill="${p.accent}" opacity="0.12">
+        <path d="M336 18l36 21v42l-36 21-36-21V39z"/>
+        <path d="M64 300l36 21v42l-36 21-36-21v-42z"/>
+      </g>`;
+    default:
+      return `
+      <circle cx="336" cy="64" r="76" fill="${p.accent}" opacity="0.12"/>
+      <circle cx="60" cy="336" r="92" fill="${p.base}" opacity="0.1"/>`;
+  }
+};
+
 const svg = (body, { size, label }) =>
   `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${size} ${size}" width="${size}" height="${size}" role="img" aria-label="${label}">${body}</svg>`;
 
-const productImage = (shape, palette, label) =>
+const productImage = (shape, palette, label, index) =>
   svg(
     `
     <defs>
@@ -187,10 +228,9 @@ const productImage = (shape, palette, label) =>
       </linearGradient>
     </defs>
     <rect width="400" height="400" rx="52" fill="url(#bg)"/>
-    <circle cx="336" cy="64" r="76" fill="${palette.accent}" opacity="0.1"/>
-    <circle cx="60" cy="336" r="92" fill="${palette.base}" opacity="0.08"/>
+    ${decor(index, palette)}
     <ellipse cx="200" cy="348" rx="124" ry="20" fill="${palette.dark}" opacity="0.1"/>
-    ${shapes[shape](palette)}`,
+    <g transform="rotate(${((index % 6) - 2.5) * 3} 200 210)">${shapes[shape](palette)}</g>`,
     { size: 400, label },
   );
 
@@ -284,7 +324,7 @@ for (const shape of Object.keys(shapes)) {
   written.push(write(`categories/${shape}.svg`, categoryIcon(shape, shape)));
   productPalettes.forEach((palette, index) => {
     written.push(
-      write(`products/${shape}-${index + 1}.svg`, productImage(shape, palette, `${shape} ${index + 1}`)),
+      write(`products/${shape}-${index + 1}.svg`, productImage(shape, palette, `${shape} ${index + 1}`, index)),
     );
   });
 }

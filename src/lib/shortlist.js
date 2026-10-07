@@ -51,9 +51,10 @@ function buildRanges(products, activePreferences) {
 function scorePreference(preference, product, ranges, category, deliveryRange) {
   switch (preference.type) {
     case 'budget': {
+      const cap = preference.cap ?? category.budgetCap;
       const total = lineTotal(product);
-      if (total <= category.budgetCap) return 1;
-      return clamp01(1 - (total - category.budgetCap) / (category.budgetCap * 0.5));
+      if (total <= cap) return 1;
+      return clamp01(1 - (total - cap) / (cap * 0.5));
     }
     case 'reviews': {
       const ratingScore = clamp01((product.rating - 3.8) / 1.2);
@@ -72,10 +73,11 @@ function scorePreference(preference, product, ranges, category, deliveryRange) {
 function reasonFor(preference, product, category) {
   switch (preference.type) {
     case 'budget': {
+      const cap = preference.cap ?? category.budgetCap;
       const total = lineTotal(product);
-      return total <= category.budgetCap
-        ? `final total ${money(total)} sits under your ${money(category.budgetCap)} budget`
-        : `closest total to your ${money(category.budgetCap)} budget at ${money(total)}`;
+      return total <= cap
+        ? `final total ${money(total)} sits under your ${money(cap)} budget`
+        : `closest total to your ${money(cap)} budget at ${money(total)}`;
     }
     case 'reviews':
       return `rated ${product.rating} from ${compactNumber(product.reviews)} reviews`;

@@ -1,6 +1,7 @@
 import { createContext, useCallback, useContext, useMemo, useReducer } from 'react';
 import { categoryBySlug, preferencesFor } from '../data/categories.js';
 import { productsForQuery } from '../data/catalog.js';
+import { interpretPrompt } from '../lib/aiPrompt.js';
 import { cartTotals } from '../lib/pricing.js';
 import { buildShortlist } from '../lib/shortlist.js';
 
@@ -8,6 +9,7 @@ const ShopContext = createContext(null);
 
 const initialState = {
   query: '',
+  aiPrompt: '',
   cart: [],
   activeProductId: null,
   preferenceCategory: null,
@@ -51,7 +53,13 @@ function reducer(state, action) {
     case 'product/active':
       return state.activeProductId === action.id ? state : { ...state, activeProductId: action.id };
     case 'preferences/set':
-      return { ...state, preferenceCategory: action.category, preferences: action.preferences, shortlist: [] };
+      return {
+        ...state,
+        preferenceCategory: action.category,
+        preferences: action.preferences,
+        aiPrompt: action.prompt ?? state.aiPrompt,
+        shortlist: [],
+      };
     case 'shortlist/set':
       return { ...state, shortlist: action.picks };
     case 'chosen/set':
@@ -104,6 +112,22 @@ export function ShopProvider({ children }) {
     [state.preferences],
   );
 
+  const runAiPrompt = useCallback((promptText) => {
+    const result = interpretPrompt(promptText);
+    if (!result.ok) return result;
+
+    dispatch({ type: 'preferences/set', category: result.category, preferences: result.preferences, prompt: result.prompt });
+
+    const picks = buildShortlist({
+      products: productsForQuery(result.category.query),
+      preferences: result.preferences,
+      category: result.category,
+    });
+    dispatch({ type: 'shortlist/set', picks });
+
+    return { ...result, picks };
+  }, []);
+
   const setQuery = useCallback((term) => dispatch({ type: 'query', term }), []);
   const setActiveProduct = useCallback((id) => dispatch({ type: 'product/active', id }), []);
   const changeQty = useCallback((id, delta) => dispatch({ type: 'cart/qty', id, delta }), []);
@@ -131,6 +155,7 @@ export function ShopProvider({ children }) {
       clearCart,
       savePreferences,
       generateShortlist,
+      runAiPrompt,
       confirmChoice,
       placeOrder,
       startNewOrder,
@@ -146,6 +171,7 @@ export function ShopProvider({ children }) {
       clearCart,
       savePreferences,
       generateShortlist,
+      runAiPrompt,
       confirmChoice,
       placeOrder,
       startNewOrder,

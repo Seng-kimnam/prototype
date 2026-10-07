@@ -11,21 +11,21 @@ import { useShop } from '../store/ShopContext.jsx';
 
 export default function Shortlist() {
   const navigate = useNavigate();
-  const { shortlist, preferenceCategory, preferences, addToCart, confirmChoice, generateShortlist } = useShop();
+  const { shortlist, preferenceCategory, preferences, aiPrompt, addToCart, confirmChoice, generateShortlist } = useShop();
   const [showCompare, setShowCompare] = useState(false);
 
   if (!shortlist.length) {
     return (
       <div className="animate-rise">
-        <Breadcrumb items={[{ label: 'Home', to: '/' }, { label: 'Preferences' }, { label: 'Shortlist' }]} />
+        <Breadcrumb items={[{ label: 'Home', to: '/' }, { label: 'Ask AI' }, { label: 'Shortlist' }]} />
         <div className="card mt-4 px-8 py-12 text-center">
           <h2 className="text-[28px] font-black">No shortlist yet</h2>
           <p className="mx-auto mt-2 max-w-[520px] text-muted">
-            Tell the AI what matters to you and it will rank the matching products for you.
+            Describe what you need and the AI will rank the matching products for you.
           </p>
           <Link to="/preferences" className="btn btn-primary mt-5">
             <img src="/images/ai/sparkle.svg" alt="" className="h-4.5 w-4.5" />
-            Choose my priorities
+            Ask the AI
           </Link>
         </div>
       </div>
@@ -50,9 +50,16 @@ export default function Shortlist() {
       />
 
       <h2 className="text-[28px] font-black">Your Smart Shortlist</h2>
-      <p className="mt-1 max-w-[720px] text-muted">
-        {shortlist.length} options out of {shortlist.length === 3 ? 'the full result set' : 'the candidates'} were
-        ranked against your priorities
+      {aiPrompt ? (
+        <p className="mt-2 inline-flex max-w-[720px] items-start gap-2 rounded-2xl bg-flame-tint px-3.5 py-2.5 text-sm text-ink">
+          <img src="/images/ai/sparkle.svg" alt="" className="mt-0.5 h-4 w-4 flex-none" />
+          <span>
+            <b>You asked:</b> “{aiPrompt}”
+          </span>
+        </p>
+      ) : null}
+      <p className="mt-2 max-w-[720px] text-muted">
+        {shortlist.length} options were ranked against your request
         {preferences.length
           ? `: ${preferences.map((preference) => preference.label.toLowerCase()).join(', ')}.`
           : '.'}{' '}
@@ -116,7 +123,7 @@ export default function Shortlist() {
       <div className="mt-5 flex flex-wrap justify-end gap-2.5">
         <Link to="/preferences" className="btn btn-secondary">
           <Icon name="sliders" className="h-4.5 w-4.5" />
-          Change preferences
+          Ask again
         </Link>
         <button type="button" onClick={rebuild} className="btn btn-secondary">
           <Icon name="refresh" className="h-4.5 w-4.5" />

@@ -8,7 +8,7 @@ import { useShop } from '../store/ShopContext.jsx';
 
 const SUCCESS_POINTS = [
   'One clear product selected — the shopper moved from many similar options to a single preferred choice.',
-  'The recommendation matched the stated needs — the pick reflects the budget, review, feature and delivery priorities that were selected.',
+  'The recommendation matched the stated needs — the pick reflects the budget, review, feature and delivery needs described in the shopper\'s request.',
   'Less choice overload — there is no long comparison list left to work through by hand.',
 ];
 
@@ -22,11 +22,11 @@ export default function Choice() {
         <div className="card mt-4 px-8 py-12 text-center">
           <h2 className="text-[28px] font-black">Nothing chosen yet</h2>
           <p className="mx-auto mt-2 max-w-[520px] text-muted">
-            Add a product from the AI shortlist and this screen will confirm the choice and its final price.
+            Describe what you need to the AI and this screen will confirm the choice and its final price.
           </p>
           <Link to="/preferences" className="btn btn-primary mt-5">
             <img src="/images/ai/sparkle.svg" alt="" className="h-4.5 w-4.5" />
-            Build my shortlist
+            Ask the AI
           </Link>
         </div>
       </div>

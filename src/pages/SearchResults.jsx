@@ -1,6 +1,5 @@
 import { useMemo } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
-import { AiFab } from '../components/AiFab.jsx';
 import { Breadcrumb } from '../components/Breadcrumb.jsx';
 import { ProductGrid } from '../components/ProductCard.jsx';
 import { SearchBar } from '../components/SearchBar.jsx';
@@ -66,7 +65,6 @@ export default function SearchResults() {
               .
             </p>
           ) : null}
-          <AiFab />
         </>
       ) : (
         <div className="mt-5 rounded-[20px] border border-dashed border-line bg-white px-8 py-10 text-center text-muted">

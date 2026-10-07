@@ -104,10 +104,10 @@ const rows = {
 };
 
 const build = (categorySlug) =>
-  rows[categorySlug].map((row) => {
+  rows[categorySlug].map((row, index) => {
     const category = categoryBySlug[categorySlug];
-    const [id, name, brand, price, rating, reviews, shipping, deliveryDays, variant, ...specValues] = row;
-    const specs = Object.fromEntries(category.specs.map((spec, index) => [spec.field, specValues[index]]));
+    const [id, name, brand, price, rating, reviews, shipping, deliveryDays, , ...specValues] = row;
+    const specs = Object.fromEntries(category.specs.map((spec, specIndex) => [spec.field, specValues[specIndex]]));
 
     return {
       id,
@@ -118,7 +118,7 @@ const build = (categorySlug) =>
       query: category.query,
       shape: category.shape,
       icon: `/images/categories/${category.shape}.svg`,
-      image: `/images/products/${category.shape}-${variant}.svg`,
+      image: `/images/products/${category.shape}-${(index % 6) + 1}.webp`,
       price,
       rating,
       reviews,

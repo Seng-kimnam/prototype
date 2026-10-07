@@ -8,7 +8,8 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "images": "node scripts/generate-images.mjs"
+    "images": "node scripts/generate-images.mjs",
+    "images:products": "node scripts/fetch-product-images.mjs"
   },
   "dependencies": {
     "react": "^19.2.0",

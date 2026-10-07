@@ -7,9 +7,9 @@ export function AiFab({ to = '/preferences', label = 'Ask AI', hintTitle = 'Need
   const navigate = useNavigate();
 
   return (
-    <div className="pointer-events-none fixed right-4 bottom-4 z-50 flex flex-col items-end gap-3 sm:right-6 sm:bottom-6">
+    <div className="pointer-events-none fixed right-10 bottom-10 z-50 flex flex-col items-end gap-3">
       {hintOpen ? (
-        <div className="animate-rise pointer-events-auto relative max-w-[240px] rounded-[18px] border border-[#d7e3ec] bg-white px-3.5 py-3 text-sm leading-snug text-navy-deep shadow-[0_16px_38px_rgba(20,42,59,0.16)]">
+        <div className="animate-rise pointer-events-auto relative max-w-60 rounded-[18px] border border-[#d7e3ec] bg-white px-3.5 py-3 text-sm leading-snug text-navy-deep shadow-[0_16px_38px_rgba(20,42,59,0.16)]">
           <b className="mb-1 block text-[15px]">{hintTitle}</b>
           Too many similar options? Let ShopNow AI narrow them into a few best-fit choices.
           <button
